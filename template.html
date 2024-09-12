@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meu PDF</title>
+
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-family: Arial, sans-serif;
+      }
+
+      .header {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 50px;
+        margin-bottom: 2vh;
+      }
+
+      .container-titulo {
+        width: 50%;
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+        align-items: center;
+      }
+
+      .container-titulo h1 {
+        font-size: 20px;
+        padding-left: 5vh;
+        color: rgb(39, 39, 39);
+      }
+
+      .container-periodo {
+        width: 50%;
+        display: flex;
+        flex-direction: row;
+        justify-content: end;
+        align-items: center;
+      }
+
+      .container-periodo h3 {
+        font-size: 15px;
+        padding-right: 5vh;
+        color: rgb(39, 39, 39);
+      }
+
+      table {
+        width: 95%;
+        border-collapse: collapse;
+        margin-bottom: 2vh;
+      }
+
+      th,
+      td {
+        border: 1px solid rgb(39, 39, 39);
+        padding: 5px;
+        text-align: left;
+      }
+
+      th {
+        font-size: 13px;
+      }
+
+      td {
+        font-size: 12px;
+      }
+
+      #dados-caixa {
+        padding: 5px;
+        text-align: left;
+        font-size: medium;
+        font-weight: bolder;
+      }
+
+      .img-cell {
+        width: 200px;
+        height: 100px;
+        text-align: center;
+      }
+
+      .img-cell img {
+        max-width: 200px;
+        max-height: 190px;
+      }
+
+      .linha-dados-pessoa {
+        width: 175px;
+        height: 25px;
+      }
+
+      .itens-doacao {
+        width: 175px;
+        height: 100px;
+      }
+
+      .itens-doacao div {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-content: center;
+      }
+
+      .itens-doacao div ul {
+        margin-right: 50px;
+      }
+
+      .carta {
+        width: 95%;
+        height: 95%;
+      }
+
+      #linha-corte {
+        border: 2px dashed #a3a2a2;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="header">
+      <div class="container-titulo">
+        <h1>Relatório de doações</h1>
+      </div>
+      <div class="container-periodo">
+        <h3>Data da consulta: {{data}}</h3>
+      </div>
+    </div>
+
+    {{#each dados}}
+    <table>
+      <thead>
+        <tr>
+          <th>Códido da Doação</th>
+          <th>Doador</th>
+          <th>Contato</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td class="linha-dados-pessoa">{{this.id}}</td>
+          <td class="linha-dados-pessoa">{{this.doador.nome}}</td>
+          <td class="linha-dados-pessoa">{{this.doador.telefone}}</td>
+          
+          <td class="img-cell" rowspan="4">
+            <img
+              src="https://img.freepik.com/fotos-gratis/homem-com-polegar-acima_1149-1712.jpg"
+              alt="Foto do João"
+            />
+          </td>
+        </tr>
+
+        <tr id="dados-caixa">
+          <td colspan="3">Dados da caixa: {{this.caixa.id}}</td>
+        </tr>
+
+        <tr>
+          <td colspan="1">Para: {{this.caixa.genero}}</td>
+          <td colspan="1">Faixa-etária: {{this.caixa.faixaEtaria}}</td>
+          <td colspan="1">Quantidade: {{this.caixa.quantidade}}</td>
+        </tr>
+
+        <tr>
+          <td class="itens-doacao" colspan="3">
+            <div>
+              {{#grouped_each 5 caixa.itens}}
+              <ul>
+                {{#each this}}
+                <li>{{this}}</li>
+                {{/each}}
+              </ul>
+              {{/grouped_each}}
+            </div>
+          </td>
+        </tr>
+
+        <tr id="linha-corte">
+          <td colspan="3" class="dados-carta">
+            <p class="carta">{{this.caixa.carta}}</p>
+          </td>
+          <td class="img-cell" rowspan="2" colspan="2">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSojqE7ztWUYLgAOLfIp8OrWRqDI-43JplTC8XdCZ8L9g&s"
+              alt="Foto do João"
+            />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    {{/each}}
+  </body>
+</html>

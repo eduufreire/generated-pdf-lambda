@@ -1,0 +1,23 @@
+{
+  "name": "outra-tentativa-de-pdf",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@sparticuz/chromium": "^127.0.0",
+    "dotenv": "^16.4.5",
+    "handlebars": "^4.7.8",
+    "puppeteer-core": "^23.2.0",
+    "puppeteer-html-pdf": "^4.0.8"
+  },
+  "devDependencies": {
+    "puppeteer": "^23.2.0"
+  }
+}

@@ -1,10 +1,10 @@
 {
   "name": "outra-tentativa-de-pdf",
   "version": "1.0.0",
-  "main": "index.js",
-  "type": "module",
+  "main": "./src/handler.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "node ./dist/server.js",
+    "build": "tsc --build"
   },
   "keywords": [],
   "author": "",
@@ -12,12 +12,19 @@
   "description": "",
   "dependencies": {
     "@sparticuz/chromium": "^127.0.0",
+    "@types/aws-lambda": "^8.10.145",
+    "dayjs": "^1.11.13",
     "dotenv": "^16.4.5",
     "handlebars": "^4.7.8",
     "puppeteer-core": "^23.2.0",
     "puppeteer-html-pdf": "^4.0.8"
   },
   "devDependencies": {
-    "puppeteer": "^23.2.0"
+    "@types/express": "^4.17.21",
+    "express": "^4.21.0",
+    "nodemon": "^3.1.4",
+    "puppeteer": "^23.2.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.2"
   }
 }

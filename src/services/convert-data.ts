@@ -4,6 +4,7 @@ type Box = {
   url: string;
   quantidade: number;
   genero: "F" | "M";
+  qrCodeToken: string;
   faixaEtaria: string;
   itens: Array<string>;
   etapas: Array<object>;
@@ -31,6 +32,7 @@ type DataPDF = {
     id: number;
     carta: string;
     url: string;
+    qrCodeToken: string;
     quantidade: number;
     genero: "F" | "M";
     faixaEtaria: string;
@@ -54,6 +56,7 @@ export default function convertDataForPDF(data: Array<DetailsOrder>): Array<Data
           id: caixaAtual.id,
           carta: caixaAtual.carta,
           url: caixaAtual.url,
+          qrCodeToken: `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${caixaAtual.qrCodeToken}`,
           quantidade: caixaAtual.quantidade,
           genero: caixaAtual.genero,
           faixaEtaria: caixaAtual.faixaEtaria,

@@ -17,9 +17,14 @@ Handlebars.registerHelper("grouped_each", function (every, context, options) {
   return out;
 });
 
-export default async function compile(dataPDF: any): Promise<string> {
-  const html = await fs.readFile(`template-pdf.html`, "utf-8");
-  const template = Handlebars.compile(html);
-  const content = template(dataPDF)
-  return content;
+export default async function compile(dataPDF: any): Promise<string | null> {
+  try {
+    const html = await fs.readFile("template-pdf.html", "utf-8");
+    const template = Handlebars.compile(html);
+    const content = template(dataPDF);
+    return content;
+  } catch (err) {
+    console.log(err);
+    return null;
+  }
 }
